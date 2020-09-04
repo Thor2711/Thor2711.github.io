@@ -8,6 +8,9 @@ tags: [Imbalanced data problem, decision tree]
 comments: true
 ---
 
+## Decision tree에서의 Imbalanced data problem
+
+Decision tree는 가장 많이 사용되는 rule-based classifier 중 하나이며, 얘는 
 This is a demo post to show you how to write blog posts with markdown.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](https://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
 
 **Here is some bold text**
