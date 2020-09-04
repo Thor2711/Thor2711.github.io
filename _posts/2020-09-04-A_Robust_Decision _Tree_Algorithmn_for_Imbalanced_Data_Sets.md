@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Sample blog post
-subtitle: Each post also has a subtitle
+title: New splitting measure for overcoming imbalanced problem.
+subtitle: Decision tree classfier에서의 imbalanced data problem과 new measure.
 gh-repo: daattali/beautiful-jekyll
 gh-badge: [star, fork, follow]
-tags: [test]
+tags: [Imbalanced data problem, decision tree]
 comments: true
 ---
 
