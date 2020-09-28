@@ -1,12 +1,14 @@
 ---
 layout: post
-title: New splitting measure for overcoming imbalanced problem.
-subtitle: Decision tree classfier에서의 imbalanced data problem과 new measure.
+title: About Decision Tree Algorithm (1)
+subtitle: #Optimal Decision Tree, #Greedy Algorithm, #Use Entropy
 gh-repo: daattali/beautiful-jekyll
 gh-badge: [star, fork, follow]
 tags: [Imbalanced data problem, decision tree]
 comments: true
 ---
+
+### [Review] Optimal classification trees, Bertsimas, Dunn 2017.
 
 ## Decision tree에서의 Imbalanced data problem
 
