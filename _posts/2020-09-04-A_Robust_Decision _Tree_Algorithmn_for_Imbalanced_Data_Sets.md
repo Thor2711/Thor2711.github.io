@@ -22,7 +22,7 @@ Decision tree의 컨셉을 정리하려고 자료를 찾아보다가 기본적�
 
 왜 greedy algorithm으로 하나하나의 분기를 최적화하는 것은 global optimal을 찾지 못할까? TSP(Traveling Saleman Problem)와 비슷한 느낌인데, 모든 가능한 case의 비교가 불가능하기 때문에 각 분기에서 가장 최소비용을 주는 path를 찾아간다. 단, 이것은 현재 간 path가 비용을 작게 주더라도 그 이후의 모든 path의 비용이 큰 경우 사실 잘못간 것이 된다. 현재의 최소비용의 선택은 그 다음에 선택에서는 오히려 큰 비용이 될 수 있고, 이것이 greedy algorithm의 한계이다.
 
-모든 case를 고려한 global optimal을 찾는 것은 불가한가? 'Hyafil and Rivest 1976'에서는 비용을 최소화하는 tree를 찾는 것이 NP-Complete라는 것을 증명하였다 (해당 논문에서는 leaf node까지의 거리를 최소화하는 tree를 찾는 것이며, 이것은 leaf node의 misclassification을 최소화하는 tree를 찾는 것과 같은 class의 문제일것 같다).
+모든 case를 고려한 global optimal을 찾는 것은 불가한가? 'Hyafil and Rivest 1976'에서는 비용을 최소화하는 tree를 찾는 것이 NP-Complete라는 것을 증명하였다 (해당 논문에서는 leaf node까지의 거리를 최소화하는 tree를 optimal tree라 정의하는데, 결국 이것은 misclassification rate를 가장 min하는 tree를 찾는 것과 step이 동일하므로 같은 NP-complete.)
 
 ### Introduction
 
