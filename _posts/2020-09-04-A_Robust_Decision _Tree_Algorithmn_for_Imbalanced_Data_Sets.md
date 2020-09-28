@@ -9,7 +9,9 @@ comments: true
 ---
 
 ## [Review] Optimal classification trees, Bertsimas, Dunn 2017
-Training $(x)$ 
+
+Decision tree의 컨셉을 정리하려고 자료를 찾아보다가 기본적인 내용이 잘 정리된 paper를 찾았다.
+**Optimal classification trees, Bertsimas, Dunn 2017**
 
 **Here is some bold text**
 
