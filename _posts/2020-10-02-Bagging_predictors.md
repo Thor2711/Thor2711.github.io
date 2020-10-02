@@ -61,7 +61,7 @@ Bagging은 좋지만 불안정한 predictor를 optimal하게 만드는 좋은 �
 
 #### Numeric prediction.
 
-일단 Independent set of sample이 있다고 하고, aggregated predictor를 만들었다고 하자.ㅣ
+일단 Independent set of sample이 있다고 하고, aggregated predictor를 만들었다고 하자.
 
 phi_A (x)  = E_L phi(x, L).
 
@@ -90,4 +90,59 @@ E_y (y-phi_B(x))^2 = E_y [(y-phi_A(x) + phi_A(x) - phi_B(x))^2] =  E_y (y-phi_A(
 
 만약 phi가 stable하다면, 오히려 phi_B와 phi_A의 차이가 phi의 variability보다 클 수가 있다. 이런 경우 더 worst.
 
+
+
+#### Classification
+
+역시 independent set of sample이 있다고 하자. 이 경우, 수많은 phi(x,L)들은 다음과 같이 불확실성은 표현할 수 있다.
+
+Q(j|x) = P(phi(x,L) = j), phi(x,L)이 j가 될 확률을 의미함.
+
+이제 P(j|x)를 정의하자. P(j|x)는 실제 x-y간 관계를 나타내는 underlying true distribution이다.
+
+그럼 실제로 phi라는 방법이 제대로 targeting하는 확률은 다음과 같이 계산된다.
+
+E_y,L 1(phi(x,L) = y) = \sum_j Q(j|x) P(j|x), 이 식은 phi 방법 자체의 performance의 평균을 의미한다.
+
+
+수많은 방법 phi에 대해서 다음은 항상 성립한다.
+
+\sum_j Q(j|x) P(j|x) <= max_j P(j|x)
+
+여기서 equality가 성립하려면, P(j|x)가 max인 j에서만 1을 갖는 Q가 되어야함. 
+
+Q(j|x) = 1, argmax_j P(j|x)
+         0, o.w
+
+이런 Q가 되려면, phi는 
+
+phi(x) = argmax_j P(j|x) 여야한다. 이것은 Basyes Predictor이다
+
+실제로 우리가 사용하는 phi는 현실적으로 이런 bayes predictor가 되기는 어렵고, 현실적으로 가능한 order-correct phi를 다음과 같이 정의한다.
+
+argmax_j Q(j|x) = argmax_j P(j|x).
+
+한 가지 여기서 overall correct rate를 정의하면
+
+r = \int  \sum_j Q(j|x) P(j|x) P_x (dx) 가 되는데 이것의 상한선 r*는
+
+r* = \int max_j P(j|x) P_x (dx).
+
+물론 order-correct phi의 경우, performance의 평균은 bayes predictor의 performance에 비해 낮지만, phi를 aggregate한다면
+
+phi_A(x) = argmax_j Q(j|x) 이고, 결과적으로 x에서 order-correct phi의 경우 그 aggregate version은 bayes predictor가 된다.
+
+만약 일부의 x \in C 에서만 order-correct인 경우에 correct rate를 구하면, 
+
+r_A = \int_x\inC max_j P(j|x) P_x(dx) + \int_x\inC' P(argmax_j Q(j|x) |x) P_x(dx).
+
+위의 식을 보면, 만약 phi가 대부분의 x에서 order-correct하다면, aggregation은 optimal할 것이다.
+
+반면에 numerical한 case와 다르게, phi가 order-correct하지 않다면 aggregation은 오히려 worse해질 것 이다.(numerical case의 경우, phi의 variability가 큰 경우에는 phi target이 안맞아도 좋아짐..)
+
+numerical, categorical 공통적으로 phi가 unstable한 경우 bagging이 잘 맞는다. 
+
+categorical에서 phi가 stable하다는 것은 majority한 class가 dominant하다는 뜻이고 이는 그냥 써도 performance가 괜찮다는 의미이다. 오히려, bagging으로 이런 관계 자체가 변할 수도 있다.
+
+phi가 unstable하다는 것은 majority class나 다른 class나 비슷하게 발생한다는 의미로 이러한 경우 bagging으로 만든 애가 더 나을 가능성이 커지게 된다. 
 
