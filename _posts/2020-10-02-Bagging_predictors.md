@@ -47,7 +47,7 @@ Take repeated bootstrap samples {L^B} from L, and form phi(x, L^B), then take ph
 
 (numerical) phi_B(x) = av_B phi(x, L^B)
 
-(categorical) phi_B(x) = argmax_j N_j, where N_j = |{k; phi(x,L^k) = j}|
+(categorical) phi_B(x) = argmax_j N_j, where N_j = nm{k; phi(x,L^k) = j}
 
 A critical factor in whether bagging will improve accuracy is the stability of predictor phi. Improvement will occur for unstable procedures where a small change in L can result in large changes in phi. For unstable proceduree bagging works well.
 
