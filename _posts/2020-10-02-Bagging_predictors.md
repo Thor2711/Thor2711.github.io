@@ -72,8 +72,22 @@ phi_A (x)  = E_L phi(x, L).
 여기서 왼쪽은 aggregated predictor의 Squared error, 오른쪽은 single predictor의 Squared error의 평균. 근데 왼쪽이 항상 작다.
 이것은 양쪽식에 new data (x,y)에 대한 expectation을 취해도 동일. 즉, 수많은 test case에 대해서 적용해도 항상 왼쪽이 작다.
 
-그럼 얼마나 작을까? 사실 이 point가 중요하다.
+**그럼 얼마나 작을까? 사실 이 point가 중요하다.**
 
 Var_L (y-phi(x,L)) = Var_L (phi(x,L))이 클수록 둘의 차이가 커진다. 즉 phi(x,L) 함수가 L에 따라 변동이 크다면 aggregated는 훨씬 좋은 performance를 보이게 된다.  
- 
+
+허나 한가지 문제점은, 우리는 phi_A가 아닌 phi_B를 사용한다는 것이다. 즉, L의 underlying distribution을 쓰는 것이 아닌 P_L 이라는 learning set의 empirical 분포를 사용한다는 것 (이를 bootstrap approximation to P라 부름). 그러면 위의 inequality가 성립하지 않음.
+
+phi_B (x) = phi_A (x, P_L).
+
+**이렇게 되면, 다음 가정이 맞는 경우에 잘 working함을 보장한다. phi가 unstable할 때.**
+
+E_y (y-phi_B(x))^2 = E_y [(y-phi_A(x) + phi_A(x) - phi_B(x))^2] =  E_y (y-phi_A(x))^2 + (phi_A(x) - phi_B(x))^2
+
+즉, (phi_A(x) - phi_B(x))^2 이 큰가 혹은 Var_L(phi(x,L))이 큰가의 문제이다.   
+
+만약 phi가 unstable하다면, phi_B와 phi_A의 bias가 차이가 있겠지만(P > P_L로 차이), variablility를 줄이면서 오히려 좋아질 것이다.
+
+만약 phi가 stable하다면, 오히려 phi_B와 phi_A의 차이가 phi의 variability보다 클 수가 있다. 이런 경우 더 worst.
+
 
