@@ -33,7 +33,7 @@ Suppose sequence of learning sets {L_k} from the same underlying distribution as
 
 (numerical) phi_A (x) = E_L phi(x,L)
 
-(categorical) phi_A (x) = argmax_j N_j, where N_j = |{k; phi(x,L_k) = j} |
+(categorical) phi_A (x) = argmax_j N_j, where N_j = nm{k; phi(x,L_k) = j}
 
 일반적으로 생각할 때, targeting이 제대로 된 prediction method phi에 대해서 average 혹은 majority vote를 한다면 variability가 줄어들게 하기 때문이다.
 
@@ -96,45 +96,45 @@ E_y (y-phi_B(x))^2 = E_y [(y-phi_A(x) + phi_A(x) - phi_B(x))^2] =  E_y (y-phi_A(
 
 역시 independent set of sample이 있다고 하자. 이 경우, 수많은 phi(x,L)들은 다음과 같이 불확실성은 표현할 수 있다.
 
-Q(j|x) = P(phi(x,L) = j), phi(x,L)이 j가 될 확률을 의미함.
+Q(j/x) = P(phi(x,L) = j), phi(x,L)이 j가 될 확률을 의미함.
 
-이제 P(j|x)를 정의하자. P(j|x)는 실제 x-y간 관계를 나타내는 underlying true distribution이다.
+이제 P(j/x)를 정의하자. P(j/x)는 실제 x-y간 관계를 나타내는 underlying true distribution이다.
 
 그럼 실제로 phi라는 방법이 제대로 targeting하는 확률은 다음과 같이 계산된다.
 
-E_y,L 1(phi(x,L) = y) = \sum_j Q(j|x) P(j|x), 이 식은 phi 방법 자체의 performance의 평균을 의미한다.
+E_y,L 1(phi(x,L) = y) = \sum_j Q(j/x) P(j/x), 이 식은 phi 방법 자체의 performance의 평균을 의미한다.
 
 
 수많은 방법 phi에 대해서 다음은 항상 성립한다.
 
-\sum_j Q(j|x) P(j|x) <= max_j P(j|x)
+\sum_j Q(j/x) P(j/x) <= max_j P(j/x)
 
-여기서 equality가 성립하려면, P(j|x)가 max인 j에서만 1을 갖는 Q가 되어야함. 
+여기서 equality가 성립하려면, P(j/x)가 max인 j에서만 1을 갖는 Q가 되어야함. 
 
-Q(j|x) = 1, argmax_j P(j|x)
+Q(j/x) = 1, argmax_j P(j/x)
          0, o.w
 
 이런 Q가 되려면, phi는 
 
-phi(x) = argmax_j P(j|x) 여야한다. 이것은 Basyes Predictor이다
+phi(x) = argmax_j P(j/x) 여야한다. 이것은 Basyes Predictor이다
 
 실제로 우리가 사용하는 phi는 현실적으로 이런 bayes predictor가 되기는 어렵고, 현실적으로 가능한 order-correct phi를 다음과 같이 정의한다.
 
-argmax_j Q(j|x) = argmax_j P(j|x).
+argmax_j Q(j/x) = argmax_j P(j/x).
 
 한 가지 여기서 overall correct rate를 정의하면
 
-r = \int  \sum_j Q(j|x) P(j|x) P_x (dx) 가 되는데 이것의 상한선 r*는
+r = \int  \sum_j Q(j/x) P(j/x) P_x (dx) 가 되는데 이것의 상한선 r*는
 
-r* = \int max_j P(j|x) P_x (dx).
+r* = \int max_j P(j/x) P_x (dx).
 
 물론 order-correct phi의 경우, performance의 평균은 bayes predictor의 performance에 비해 낮지만, phi를 aggregate한다면
 
-phi_A(x) = argmax_j Q(j|x) 이고, 결과적으로 x에서 order-correct phi의 경우 그 aggregate version은 bayes predictor가 된다.
+phi_A(x) = argmax_j Q(j/x) 이고, 결과적으로 x에서 order-correct phi의 경우 그 aggregate version은 bayes predictor가 된다.
 
 만약 일부의 x \in C 에서만 order-correct인 경우에 correct rate를 구하면, 
 
-r_A = \int_x\inC max_j P(j|x) P_x(dx) + \int_x\inC' P(argmax_j Q(j|x) |x) P_x(dx).
+r_A = \int_x\inC max_j P(j/x) P_x(dx) + \int_x \in C' P(argmax_j Q(j/x) /x) P_x(dx).
 
 위의 식을 보면, 만약 phi가 대부분의 x에서 order-correct하다면, aggregation은 optimal할 것이다.
 
