@@ -27,6 +27,8 @@ Decision tree의 컨셉을 정리하려고 자료를 찾아보다가 기본적�
 ### Introduction
 
 
+**pruning을 하는 이유는 우리가 greedy algorithm을 사용하기 때문에 local optima에 빠지지 않기 위해 최대한 키우기 때문이다**
+
 
 
 
