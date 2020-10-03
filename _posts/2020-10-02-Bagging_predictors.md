@@ -146,3 +146,5 @@ categorical에서 phi가 stable하다는 것은 majority한 class가 dominant하
 
 phi가 unstable하다는 것은 majority class나 다른 class나 비슷하게 발생한다는 의미로 이러한 경우 bagging으로 만든 애가 더 나을 가능성이 커지게 된다. 
 
+
+**해당 논문의 나머지 파트는 면접이 끝나고 정리해보자**
