@@ -4,7 +4,6 @@ title: Bagging predictors
 subtitle: Bagging, Why bagging predictor works?
 gh-repo: daattali/beautiful-jekyll
 gh-badge: [star, fork, follow]
-use_math: true
 tags: [bagging]
 comments: true
 ---
