@@ -142,7 +142,7 @@ r_A = \int_x\inC max_j P(j/x) P_x(dx) + \int_x \in C' P(argmax_j Q(j/x) /x) P_x(
 
 numerical, categorical 공통적으로 phi가 unstable한 경우 bagging이 잘 맞는다. 
 
-categorical에서 phi가 stable하다는 것은 majority한 class가 dominant하다는 뜻이고 이는 그냥 써도 performance가 괜찮다는 의미이다. 오히려, bagging으로 이런 관계 자체가 변할 수도 있다.
+categorical에서 phi가 stable하다는 것은 majority한 class가 dominant하다는 뜻이고 이는 그냥 써도 performance가 괜찮다는 의미이다. 오히려, bagging이 큰 의미가 없다.
 
 phi가 unstable하다는 것은 majority class나 다른 class나 비슷하게 발생한다는 의미로 이러한 경우 bagging으로 만든 애가 더 나을 가능성이 커지게 된다. 
 
