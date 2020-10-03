@@ -23,7 +23,7 @@ Instability가 큰 경우, bagging predictor로 성능 향상을 할 수 있다�
 
 ### Intro
 
-Learning set $L = (y_n, x_n)$이 있고, predictor $\phi(x,L)$라 하자. phi는 L에 의해서 결정되는 임의의 선정된 prediction method를 의미.
+Learning set $$L = (y_n, x_n)$$이 있고, predictor $\phi(x,L)$라 하자. phi는 L에 의해서 결정되는 임의의 선정된 prediction method를 의미.
 
 Suppose sequence of learning sets {L_k} from the same underlying distribution as L. L과 같은 분포에서 나온 independent한 learning sets {L_k}가 있다. 
 
